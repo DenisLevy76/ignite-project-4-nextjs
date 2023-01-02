@@ -1,5 +1,9 @@
-import Head from 'next/head'
+import Head from 'next/head';
+import { styled } from '../styles';
 
+const Button = styled('button', {
+  backgroundColor: '$rocktseat',
+});
 
 export default function Home() {
   return (
@@ -8,8 +12,8 @@ export default function Home() {
         <title>Create Next App</title>
       </Head>
       <main>
-        <h1>Hello world</h1>
+        <Button>Hello world</Button>
       </main>
     </>
-  )
+  );
 }
