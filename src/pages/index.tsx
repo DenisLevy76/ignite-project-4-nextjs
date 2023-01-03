@@ -1,9 +1,6 @@
 import Head from 'next/head';
 import { styled } from '../styles';
-
-const Button = styled('button', {
-  backgroundColor: '$rocktseat',
-});
+import { HomeContainer } from '../styles/pages/home';
 
 export default function Home() {
   return (
@@ -11,9 +8,9 @@ export default function Home() {
       <Head>
         <title>Create Next App</title>
       </Head>
-      <main>
-        <Button>Hello world</Button>
-      </main>
+      <HomeContainer>
+        <h1>Hello world</h1>
+      </HomeContainer>
     </>
   );
 }

@@ -2,8 +2,12 @@ import type { AppProps } from 'next/app';
 import Head from 'next/head';
 
 import { Roboto } from '@next/font/google';
+import { globalStyles } from '../styles/global';
+import { HeaderComponent } from '../components/HeaderComponent';
 
 const roboto = Roboto({ weight: ['400', '700'] });
+
+globalStyles();
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -13,6 +17,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <HeaderComponent />
       <Component {...pageProps} />
     </div>
   );
