@@ -1,5 +1,6 @@
 import { styled } from '@stitches/react';
 import * as Dialog from '@radix-ui/react-dialog'
+import { keyframes } from '../../styles';
 
 export const CartComponentContainer = styled(Dialog.Root, {})
 
@@ -29,13 +30,27 @@ export const CartClose = styled(Dialog.Close, {
   }
 })
 
+const ContentAnimation = keyframes({
+  '0%': {
+    transform: 'translateX(110%)',
+  },
+  '65%': {
+    transform: 'scaleX(1.05)',
+  },
+  '100%': {
+    transform: 'translateX(0%) scaleX(1)',
+  },
+})
+
 export const CartContent = styled(Dialog.Content, {
   width: 480,
-  height: '100vh',
+  maxHeight: '100vh',
   position: 'fixed',
   top: 0,
   right: 0,
   bottom: 0,
+  animation: `${ContentAnimation} 0.2s ease-in-out`,
+  zIndex: 999,
 
   background: '$gray800',
   padding: '3rem',
@@ -46,15 +61,25 @@ export const CartContent = styled(Dialog.Content, {
     justifyContent: 'flex-end',
   },
 
+  '> main': {
+    height: '88%',
+  },
+
   'main > h2': {
     fontSize: '$lg',
     marginBottom: '2rem',
   },
 
   'main > ul': {
-    listStyle: 'none'
+    listStyle: 'none',
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '1rem',
+    overflowY: 'auto',
   }
 })
+
+
 
 export const CartItem = styled('article', {
   display: 'flex',
@@ -98,5 +123,26 @@ export const CartItem = styled('article', {
 
   '> figure > img': {
     objectFit: 'cover',
+  }
+})
+
+export const ButtonComponent = styled('button', {
+  background: '$green500',
+  borderRadius: '8px',
+  padding: '1.25rem 2rem',
+  fontSize: '$md',
+  fontWeight: 'bold',
+  cursor: 'pointer',
+  transition: 'all 0.2s',
+  marginTop: 'auto',
+  width: '100%',
+
+
+  '&:not(:disabled):hover': {
+    background: '$green300',
+  },
+
+  '&:disabled': {
+    opacity: 0.7,
   }
 })

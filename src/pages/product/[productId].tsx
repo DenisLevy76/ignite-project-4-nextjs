@@ -1,9 +1,10 @@
 import axios from "axios";
 import { GetStaticPaths, GetStaticProps } from "next";
 import Head from "next/head";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Stripe from "stripe";
 import { ProductComponent } from "../../components/ProductComponent";
+import { CartContext } from "../../contexts/CartContext";
 import { stripe } from "../../lib/stripe";
 import {
   ProductDetails,
@@ -22,27 +23,11 @@ interface ProductPageProps {
 }
 
 const Product: React.FC<ProductPageProps> = ({ product }) => {
-  const [isCreatingAnCheckoutSession, setIsCreatingAnCheckoutSession] =
-    useState<boolean>(false);
+  const { addToCart } = useContext(CartContext);
+
   if (!product) {
     return <h1>Loading..</h1>;
   }
-
-  const createCheckoutSession = async () => {
-    try {
-      setIsCreatingAnCheckoutSession(true);
-      const response = await axios.post("/api/checkout", {
-        priceId: product.defaultPriceId,
-      });
-      const { checkoutUrl } = response.data;
-
-      window.location.href = checkoutUrl;
-    } catch (error) {
-      alert("Falha ao criar a compra.");
-    } finally {
-      setIsCreatingAnCheckoutSession(false);
-    }
-  };
 
   return (
     <>
@@ -59,7 +44,7 @@ const Product: React.FC<ProductPageProps> = ({ product }) => {
           <button
             type="button"
             className="product__shop"
-            onClick={createCheckoutSession}
+            onClick={() => addToCart(product)}
           >
             Colocar na sacola
           </button>
