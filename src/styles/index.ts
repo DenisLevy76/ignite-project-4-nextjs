@@ -18,6 +18,7 @@ export const { config,
       gray900: '#121214',
       gray800: '#202024',
       ['gray800-popup']: '#202024e0',
+      gray500: '#8D8D99',
       gray300: '#c4c4cc',
       gray100: '#e1e1e6',
 

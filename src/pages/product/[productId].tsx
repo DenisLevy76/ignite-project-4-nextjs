@@ -60,9 +60,8 @@ const Product: React.FC<ProductPageProps> = ({ product }) => {
             type="button"
             className="product__shop"
             onClick={createCheckoutSession}
-            disabled={isCreatingAnCheckoutSession}
           >
-            Comprar
+            Colocar na sacola
           </button>
         </ProductDetails>
       </ProductPageContainer>
