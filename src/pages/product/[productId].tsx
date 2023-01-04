@@ -1,5 +1,6 @@
 import axios from "axios";
 import { GetStaticPaths, GetStaticProps } from "next";
+import Head from "next/head";
 import { useState } from "react";
 import Stripe from "stripe";
 import { ProductComponent } from "../../components/ProductComponent";
@@ -44,22 +45,28 @@ const Product: React.FC<ProductPageProps> = ({ product }) => {
   };
 
   return (
-    <ProductPageContainer>
-      <ProductComponent product={product} primary={false} />
-      <ProductDetails>
-        <h2 className="product__name">{product.name}</h2>
-        <span className="product__price">{product.price}</span>
-        <span className="product__desc">{product.description}</span>
-        <button
-          type="button"
-          className="product__shop"
-          onClick={createCheckoutSession}
-          disabled={isCreatingAnCheckoutSession}
-        >
-          Comprar
-        </button>
-      </ProductDetails>
-    </ProductPageContainer>
+    <>
+      <Head>
+        <title>{product.name} - Ignite Shop</title>
+      </Head>
+
+      <ProductPageContainer>
+        <ProductComponent product={product} primary={false} />
+        <ProductDetails>
+          <h2 className="product__name">{product.name}</h2>
+          <span className="product__price">{product.price}</span>
+          <span className="product__desc">{product.description}</span>
+          <button
+            type="button"
+            className="product__shop"
+            onClick={createCheckoutSession}
+            disabled={isCreatingAnCheckoutSession}
+          >
+            Comprar
+          </button>
+        </ProductDetails>
+      </ProductPageContainer>
+    </>
   );
 };
 

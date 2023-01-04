@@ -30,8 +30,9 @@ export default function Home({ products }: HomePageProps) {
   return (
     <>
       <Head>
-        <title>Create Next App</title>
+        <title>Home | Ignite Shop</title>
       </Head>
+
       <HomeContainer>
         <ul ref={sliderRef} className="keen-slider">
           {products.map((product) => (
