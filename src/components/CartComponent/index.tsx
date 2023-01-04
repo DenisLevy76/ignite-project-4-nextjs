@@ -40,6 +40,7 @@ export const CartComponent: React.FC = () => {
     <CartComponentContainer>
       <CartTrigger title="Abrir carrinho" aria-label="Abrir carrinho">
         <Handbag size={24} weight="bold" />
+        {cart.length > 0 && <span>{cart.length}</span>}
       </CartTrigger>
       <CartContent>
         <header>

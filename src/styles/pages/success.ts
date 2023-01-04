@@ -35,10 +35,19 @@ export const SuccessPageContainer = styled('main', {
   }
 })
 
+export const ProductsList = styled('ul', {
+  display: 'flex',
+
+  'li + li': {
+    marginLeft: '-3.5rem'
+  }
+})
+
 export const ProductFigure = styled('figure', {
   padding: '1rem',
-  borderRadius: '8px',
+  borderRadius: '50%',
   background: 'linear-gradient(180deg, #1EA483 0%, #7465D4 100%);',
+  boxShadow: '0px 0px 60px rgba(0, 0, 0, 0.8)',
 
   img: {
     width: 114,

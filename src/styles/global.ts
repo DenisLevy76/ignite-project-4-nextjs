@@ -15,5 +15,8 @@ export const globalStyles = globalCss({
   'body, input, button, textarea': {
     fontWeight: 400,
     color: '$gray100'
+  },
+  ul: {
+    listStyle: 'none'
   }
 })

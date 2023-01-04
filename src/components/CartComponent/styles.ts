@@ -11,9 +11,28 @@ export const CartTrigger = styled(Dialog.Trigger, {
   borderRadius: 8,
   color: '$gray500',
   cursor: 'pointer',
+  position: 'relative',
+  margin: '0 1.2rem',
 
   '&:hover': {
     color: '$gray300'
+  },
+
+  '> span': {
+    position: 'absolute',
+    top: -10,
+    right: -10,
+    width: 24,
+    height: 24,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    background: '$green500',
+    color: '$gray100',
+    fontWeight: 700,
+
+    borderRadius: '50%',
+    border: '3px solid black'
   }
 })
 
