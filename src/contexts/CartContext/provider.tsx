@@ -15,12 +15,15 @@ export const CartContextProvider: React.FC<{ children: ReactNode }> = ({
     setCart((state) => state.filter((product) => product.id !== productId));
   };
 
-  useEffect(() => {
-    console.log(cart);
-  }, [cart]);
+  const isInTheCart = (productId: string) => {
+    const index = cart.findIndex((product) => product.id === productId);
+    return index >= 0;
+  };
 
   return (
-    <CartContext.Provider value={{ cart, addToCart, removeFromCart }}>
+    <CartContext.Provider
+      value={{ cart, addToCart, removeFromCart, isInTheCart }}
+    >
       {children}
     </CartContext.Provider>
   );

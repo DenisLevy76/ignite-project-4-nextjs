@@ -32,23 +32,42 @@ export const ProductDetails = styled('article', {
     flexDirection: 'column',
     gap: '0.5rem'
   },
-  '.product__shop': {
-    background: '$green500',
-    borderRadius: '8px',
-    padding: '1.25rem 2rem',
-    fontSize: '$md',
-    fontWeight: 'bold',
-    cursor: 'pointer',
-    transition: 'all 0.2s',
-    marginTop: 'auto',
+})
+
+export const CartButton = styled('button', {
+  borderRadius: '8px',
+  padding: '1.25rem 2rem',
+  fontSize: '$md',
+  fontWeight: 'bold',
+  cursor: 'pointer',
+  transition: 'all 0.2s',
+  marginTop: 'auto',
 
 
-    '&:not(:disabled):hover': {
-      background: '$green300',
-    },
+  '&:not(:disabled):hover': {
+    background: '$green300',
+  },
 
-    '&:disabled': {
-      opacity: 0.7,
+  '&:disabled': {
+    opacity: 0.7,
+  },
+
+  variants: {
+    variant: {
+      add: {
+        background: '$green500',
+
+        '&:not(:disabled):hover': {
+          background: '$green300',
+        },
+      },
+      remove: {
+        background: '#871800',
+
+        '&:not(:disabled):hover': {
+          background: '#922923',
+        },
+      }
     }
   }
 })

@@ -7,6 +7,7 @@ import { ProductComponent } from "../../components/ProductComponent";
 import { CartContext } from "../../contexts/CartContext";
 import { stripe } from "../../lib/stripe";
 import {
+  CartButton,
   ProductDetails,
   ProductPageContainer,
 } from "../../styles/pages/product";
@@ -23,7 +24,7 @@ interface ProductPageProps {
 }
 
 const Product: React.FC<ProductPageProps> = ({ product }) => {
-  const { addToCart } = useContext(CartContext);
+  const { addToCart, removeFromCart, isInTheCart } = useContext(CartContext);
 
   if (!product) {
     return <h1>Loading..</h1>;
@@ -41,13 +42,26 @@ const Product: React.FC<ProductPageProps> = ({ product }) => {
           <h2 className="product__name">{product.name}</h2>
           <span className="product__price">{product.price}</span>
           <span className="product__desc">{product.description}</span>
-          <button
-            type="button"
-            className="product__shop"
-            onClick={() => addToCart(product)}
-          >
-            Colocar na sacola
-          </button>
+
+          {!isInTheCart(product.id) ? (
+            <CartButton
+              type="button"
+              className="product__shop"
+              variant="add"
+              onClick={() => addToCart(product)}
+            >
+              Colocar na sacola
+            </CartButton>
+          ) : (
+            <CartButton
+              type="button"
+              variant="remove"
+              className="product__shop"
+              onClick={() => removeFromCart(product.id)}
+            >
+              Remover da sacola
+            </CartButton>
+          )}
         </ProductDetails>
       </ProductPageContainer>
     </>

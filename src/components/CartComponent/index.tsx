@@ -79,7 +79,7 @@ export const CartComponent: React.FC = () => {
         <footer>
           <ButtonComponent
             onClick={createCheckoutSession}
-            disabled={isCreatingAnCheckoutSession}
+            disabled={isCreatingAnCheckoutSession || cart.length <= 0}
           >
             Finalizar Compra
           </ButtonComponent>

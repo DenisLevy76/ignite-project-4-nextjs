@@ -11,4 +11,5 @@ export interface CartContextData {
   cart: IProduct[]
   addToCart: (product: IProduct) => void
   removeFromCart: (productId: string) => void
+  isInTheCart: (productId: string) => boolean
 }
